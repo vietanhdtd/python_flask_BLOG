@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="jumbotron jumbotron-fluid py-2" style="background-color:transparent ">
+        <div>
+            <h1 class="display-4 text-black-50">Register</h1>
+            <p class="lead text-black-50">Please fill in this form to create an account.</p>
+        </div>
+        </div>
+{% for field in form.errors %}
+{% for error in form.errors[field] %}
+    <div class="alert alert-error">
+        <strong>Error!</strong> {{error}}
+    </div>
+{% endfor %}
+{% endfor %}
+<form method = 'post' >
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+    {{ form.username.label }} {{ form.username(class="form-control", placeholder="Enter Username") }}
+    </div>
+    <div class="form-group">
+        {{ form.email.label }}
+        {{ form.email(class="form-control") }}  
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group d-flex">
+            <div class="col-6 pl-0">
+                {{ form.password.label }}
+                {{ form.password(class="form-control", placeholder="Password") }}
+            </div>
+            <div class="col-6 pr-0">
+                {{ form.password_confirm.label }}
+                {{ form.password_confirm(class="form-control", placeholder="Password") }}
+            </div>
+    </div>
+    <div class="mt-5">
+        {{ form.submit( class="btn btn-warning btn-block") }}
+    </div>
+</form>
+{% endblock content %}

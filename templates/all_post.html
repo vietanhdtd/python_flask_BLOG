@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if  current_user.is_authenticated %}
+        <h1 class="text-white">Welcome {{ current_user.username }}!</h1>
+        <a class="btn btn-danger" href="/create_post">Post</a>
+        <a class="btn btn-warning" href="/logout">Logout</a>
+    {% else %}
+        <h3> Welcome to Pepe the Blog !!! </h3>
+    {% endif %}
+
+{% for post in all_post %}
+<div class="card my-2" style="background-color:rgba(193, 160, 236, 0.479)">
+    <div class="card-body">
+        <h4 class="card-title font-weight-bolder">{{ post.title }}</h4>
+        <h6 class="card-subtitle mb-3 text-muted font-italic"># {{ post.author_name }}</h6>
+        <p class="card-text">{{ post.body }}</p>
+        <a href='/all_post/{{ post.id }}' class="card-link">Edit</a>
+    </div>
+</div>
+    <!-- <li> Author : {{ post.author_name }} 
+        <br>
+        Title : {{ post.title }}
+        <br>
+        Body : {{ post.body }}
+        <br>
+        Created On: {{ post.created_on}}
+        <br>
+        <a class="btn btn-warning" href='/all_post/{{ post.id }}'>click</a>
+    </li> -->
+{% endfor %}
+
+{% endblock %}

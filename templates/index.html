@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron" style="background-color:transparent">
+        <h1 class="display-4 text-white">{{ text_here }}</h1>
+        <p class="lead">This is Viet Anh Nguyen's Blog, where you can register an account and create a post for yourself.</p>
+        <hr class="my-4">
+        <p>This blog made by Python, Flask, Flask-login, Flask-sqlAlchemy, WTForms</p>
+        <a class="btn btn-success" href="/login">Login</a>
+        <a class="btn btn-success" href="/register">Register</a>
+</div>
+{% endblock %}

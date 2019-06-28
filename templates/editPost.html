@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<form method="post">
+        {% for field in post.errors %}
+        {% for error in post.errors[field] %}
+            <div class="alert alert-error">
+                <strong>Error!</strong> {{error}}
+            </div>
+        {% endfor %}
+        {% endfor %}
+
+    {{ post.hidden_tag() }}
+    <h2> {{ current_user.username }}</h2>
+    <a class="text-danger">{{ post.title.label }} {{ post.title( value = OGpost.title) }}</a>
+    {{ post.body.label }} 
+    {{ post.body(class="form-control", rows="6") }}
+    
+    {{ post.submit() }}
+</form>
+    {{ text }}
+{% endblock %}

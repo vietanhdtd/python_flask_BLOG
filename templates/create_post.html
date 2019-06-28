@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid py-2" style="background-color:transparent">
+    <div>
+        <h1 class="display-4 text-white">Create Post</h1>
+        <p class="lead text-black-50">Write whatever you want and it will show in the feeds</p>
+    </div>
+</div>
+<form method="post">
+        {% for field in post.errors %}
+        {% for error in post.errors[field] %}
+            <div class="alert alert-error">
+                <strong>Error!</strong> {{error}}
+            </div>
+        {% endfor %}
+        {% endfor %}
+
+    {{ post.hidden_tag() }}
+    <h2> {{ current_user.username }}</h2>
+    <a class="text-danger">{{ post.title(class="form-control", placeholder="Enter title") }}</a>
+    {{ post.body.label }} 
+    {{ post.body(class="form-control", rows="6") }}
+    
+    {{ post.submit() }}
+</form>
+    {{ text }}
+{% endblock %}
